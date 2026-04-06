@@ -14,9 +14,12 @@ jobs:
         config:
         - name: Windows
           os: windows-latest
-        - name: Android
+        - name: Android64
           os: ubuntu-latest
-          target: Android
+          target: Android64
+        - name: Android32
+          os: ubuntu-latest
+          target: Android32
 
     name: ${{ matrix.config.name }}
     runs-on: ${{ matrix.config.os }}
@@ -24,11 +27,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Build
+      - name: Build the mod
         uses: geode-sdk/build-geode-mod@main
         with:
-          # This tells the builder to use the latest dev tools 
-          # so it doesn't crash on your custom version number
           sdk: nightly
           combine: true
           target: ${{ matrix.config.target }}
