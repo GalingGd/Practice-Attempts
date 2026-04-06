@@ -12,11 +12,13 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - name: Windows
-            os: windows-latest
-          - name: Android
-            os: ubuntu-latest
-            target: Android
+        - name: Windows
+          os: windows-latest
+        - name: macOS
+          os: macos-latest
+        - name: Android
+          os: ubuntu-latest
+          target: Android
 
     name: ${{ matrix.config.name }}
     runs-on: ${{ matrix.config.os }}
