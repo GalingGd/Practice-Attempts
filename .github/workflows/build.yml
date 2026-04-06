@@ -14,12 +14,12 @@ jobs:
         config:
           - name: Windows
             os: windows-latest
-          - name: macOS
           - name: Android
+            os: ubuntu-latest
             target: Android
 
     name: ${{ matrix.config.name }}
-    runs-on: ${{ matrix.config.os || 'ubuntu-latest' }}
+    runs-on: ${{ matrix.config.os }}
 
     steps:
       - uses: actions/checkout@v4
